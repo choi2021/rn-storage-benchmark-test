@@ -1,13 +1,13 @@
 import {ANDROID_DATABASE_PATH, IOS_LIBRARY_PATH, open} from '@op-engineering/op-sqlite';
 import {Platform} from "react-native";
+import {value} from "@/storageKeyValue";
 
 
 const db = open({name:'data', location: Platform.OS === 'ios' ? IOS_LIBRARY_PATH : ANDROID_DATABASE_PATH,});
 
- db.execute( 'DROP TABLE IF EXISTS Benchmark');
  db.execute( 'CREATE TABLE IF NOT EXISTS Benchmark(value VARCHAR(30))');
  db.execute( 'INSERT INTO Benchmark (value) VALUES (:value)', [
-     'hello',
+     value,
  ]);
 
 export function getFromSQLite(){

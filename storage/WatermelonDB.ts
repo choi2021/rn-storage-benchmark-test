@@ -1,6 +1,7 @@
 import {appSchema, Database, Model, tableSchema} from '@nozbe/watermelondb';
 import {field} from '@nozbe/watermelondb/decorators';
 import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
+import {value} from "@/storageKeyValue";
 
 const TABLE = 'Test';
 
@@ -37,8 +38,8 @@ const promise = database.write(async () => {
     await database.unsafeResetDatabase();
     try {
         const entry = await table.create(m => {
-            m._raw.id = 'hello';
-            m.value = 'hello';
+            m._raw.id = value;
+            m.value = value;
         });
         return entry;
     } catch (e) {
@@ -52,6 +53,6 @@ export async function getFromWatermelonDB(): Promise<string> {
         await promise;
         isCreated = true;
     }
-    const row = await table.find('hello');
+    const row = await table.find(value);
     return row.value;
 }
