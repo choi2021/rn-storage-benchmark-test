@@ -13,7 +13,7 @@
 - 초기화 후, key: 'k', value: 'hello' 저장
 - value 가져오기
 
-<img src="assets/images/bench-mark-result.png" width="500">
+<img src="assets/images/bench-mark-result-ios-simulator.png" width="500">
 
 성능: mmkv> watermelonDB> op-sqlite> asyncStorage
 
@@ -22,7 +22,7 @@
 - 초기화 후 key:'k', value: 길이가 100000개인 배열 저장
 - value 가져오기
 
-<img src="assets/images/bench-mark-result2.png" width="500">
+<img src="assets/images/bench-mark-result2-ios-simulator.png" width="500">
 
 성능: watermelonDB> mmkv> op-sqlite> asyncStorage
 
