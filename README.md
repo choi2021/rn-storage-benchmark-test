@@ -12,8 +12,17 @@
 ## 1번 시나리오
 - 초기화 후, key: 'k', value: 'hello' 저장
 - value 가져오기
+<table>
+    <tr>
+        <th>안드로이드</th>
+        <th>iOS</th>
+    </tr>
+    <tr>
+        <td><img src="assets/images/bench-mark-result1-android.png" width="500"></td>
+        <td><img src="assets/images/bench-mark-result1-ios.png" width="500"></td>
+    </tr>
+</table>
 
-<img src="assets/images/bench-mark-result-ios-simulator.png" width="500">
 
 성능: mmkv> watermelonDB> op-sqlite> asyncStorage
 
@@ -22,9 +31,19 @@
 - 초기화 후 key:'k', value: 길이가 100000개인 배열 저장
 - value 가져오기
 
-<img src="assets/images/bench-mark-result2-ios-simulator.png" width="500">
+<table>
+    <tr>
+        <th>안드로이드</th>
+        <th>iOS</th>
+    </tr>
+    <tr>
+        <td><img src="assets/images/bench-mark-result2-android.png" width="500"></td>
+        <td><img src="assets/images/bench-mark-result2-ios.png" width="500"></td>
+    </tr>
+</table>
+
 
 성능: watermelonDB> mmkv> op-sqlite> asyncStorage
 
 ## 정리
-간단한 문자열과 값을 읽는 데에는 **MMKV**가 유리하지만 복잡한 데이터 구조일 경우 watermelonDB가 더 빠르다.
+모든 케이스에서 mmkv가 가장 좋다

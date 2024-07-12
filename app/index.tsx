@@ -34,7 +34,12 @@ async function benchmark(
     }
 }
 
-const getFromStorage=(type:StorageType)=>{
+async function waitForGC(): Promise<void> {
+    // Wait for Garbage Collection to run. We give a 500ms delay.
+    return new Promise(r => setTimeout(r, 1500));
+}
+
+const getFromStorage= (type:StorageType)=>{
     switch (type) {
         case 'op-sqlite':
             return getFromSQLite;
@@ -49,7 +54,7 @@ const getFromStorage=(type:StorageType)=>{
 
 type StorageType = 'op-sqlite' | 'mmkv' | 'async-storage' | 'watermelonDB';
 
-const storageTypes: StorageType[] = ['op-sqlite', 'mmkv', 'async-storage', 'watermelonDB'];
+const storageTypes: StorageType[] = ['watermelonDB','async-storage','op-sqlite', 'mmkv'];
 
 
 
@@ -63,6 +68,7 @@ export default function Index() {
     const runBenchmarks = useCallback(async () => {
 
         const values = await Promise.all(storageTypes.map(async (type) => {
+            await waitForGC()
             return benchmark(`${type}       `, getFromStorage(type));
         }))
 
