@@ -43,7 +43,7 @@
 </table>
 
 
-성능: watermelonDB> mmkv> op-sqlite> asyncStorage
+성능:mmkv> watermelonDB> op-sqlite> asyncStorage
 
 ## 정리
 모든 케이스에서 mmkv가 가장 좋다
